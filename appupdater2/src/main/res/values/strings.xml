@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppUpdater</string>
+    <string name="update_available_title">Update available</string>
+    <string name="update_available_msg">Press OK to update this app</string>
+    <string name="update_available_subtitle">Click here to install</string>
+    <string name="update_error">"Thre was an error while updating, please try again later.</string>
+    <string name="update_provider_name">Your host</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+</resources>
