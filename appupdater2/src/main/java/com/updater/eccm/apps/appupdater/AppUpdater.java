@@ -56,7 +56,7 @@ public class AppUpdater {
             File toInstall = new File(apkFileName);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                Uri apkUri = FileProvider.getUriForFile(ctx.getApplicationContext(), ctx.getPackageName() + ".provider", toInstall);
+                Uri apkUri = FileProvider.getUriForFile(ctx, ctx.getPackageName() + ".provider", toInstall);
                 intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
                 intent.setData(apkUri);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
