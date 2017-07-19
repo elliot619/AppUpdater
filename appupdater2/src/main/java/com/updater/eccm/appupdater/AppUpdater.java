@@ -40,7 +40,6 @@ public class AppUpdater {
     }
 
     public void sendNetworkUpdateAppRequest(String updateUrl) {
-
         try {
             currentVersion = Float.parseFloat(this.ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0).versionName);
             new UpdateAppAsyncTask().execute(updateUrl);
