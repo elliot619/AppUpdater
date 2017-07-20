@@ -13,7 +13,7 @@ First step to use this is to add this repository in you project build.gradle:
 
 Then you need to include this dependency in you app build.gradle:
     ```
-compile 'com.github.elliot619:AppUpdater:-SNAPSHOT'
+compile \'com.github.elliot619:AppUpdater:-SNAPSHOT\'
 ```
 
 If you have problems on merge of manifests, add this code to the end of you app build.gradle (You can put any version you need for the support library):
