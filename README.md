@@ -46,7 +46,6 @@ new AppUpdater(MyActivity.this).sendNetworkUpdateAppRequest("http://www.domain.c
 The translations for this are in english, but you can override them by putting this strings in your res/strings.xml:
 
 ```
-<string name="app_name">AppUpdater</string>
 <string name="update_available_title">Update available</string>
 <string name="update_available_msg">Press OK to update this app</string>
 <string name="update_available_subtitle">Click here to install</string>
