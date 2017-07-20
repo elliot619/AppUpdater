@@ -36,7 +36,7 @@ To check for the updates, this library looks for a JSON file hosted in a server 
 {"currentVersion":"2.0","apkUrl":"http://www.domain.com/appFile.apk"}
 ```
 
-To make the comparison and decide if there is an available update, the plugin checks for the versionName of the app defined in it's build.gradle against the currentVersion in the JSON file.
+To make the comparison and decide if there is an available update, the plugin checks for the versionName of the app defined in it's build.gradle against the currentVersion in the JSON file, then if versionName is lower than currentVersion, the plugin starts the download of the file defined in apkUrl. Once the file is downloaded, the PackageManager its launched and it handles the downloaded APK.
 
 To use this plugin you need to add this line whatever you need it:
 ```
