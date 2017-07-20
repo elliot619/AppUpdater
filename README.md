@@ -12,7 +12,7 @@ First step to use this is to add this repository in you project build.gradle:
   ```
 
 Then you need to include this dependency in you app build.gradle:
-    ```
+```
 compile \'com.github.elliot619:AppUpdater:-SNAPSHOT\'
 ```
 
@@ -22,7 +22,7 @@ If you have problems on merge of manifests, add this code to the end of you app 
 configurations.all {
     resolutionStrategy.eachDependency { details ->
         def requested = details.requested
-        if (requested.group == 'com.android.support') {
+        if (requested.group == \'com.android.support\') {
             if (!requested.name.startsWith("multidex")) {
                 details.useVersion '25.3.1'
             }
