@@ -111,7 +111,11 @@ public class AppUpdater {
                             String apkLocation = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
                             apkLocation = apkLocation.replace("file://", "");
                             install(apkLocation);
+                        } else {
+                            Toast.makeText(ctx, ctx.getString(R.string.update_error), Toast.LENGTH_LONG).show();
                         }
+
+                        Log.i("handleData()", "Reason: " + c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON)));
                     }
                 }
             }
