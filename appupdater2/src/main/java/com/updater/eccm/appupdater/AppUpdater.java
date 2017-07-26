@@ -97,26 +97,31 @@ public class AppUpdater {
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+                try {
+                    String action = intent.getAction();
+                    if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
 
-                    Bundle extras = intent.getExtras();
-                    DownloadManager.Query q = new DownloadManager.Query();
-                    q.setFilterById(extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID));
-                    Cursor c = dm.query(q);
+                        Bundle extras = intent.getExtras();
+                        DownloadManager.Query q = new DownloadManager.Query();
+                        q.setFilterById(extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID));
+                        Cursor c = dm.query(q);
 
-                    if (c.moveToFirst()) {
-                        int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
-                        if (status == DownloadManager.STATUS_SUCCESSFUL) {
-                            String apkLocation = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
-                            apkLocation = apkLocation.replace("file://", "");
-                            install(apkLocation);
-                        } else {
-                            Toast.makeText(ctx, ctx.getString(R.string.update_error), Toast.LENGTH_LONG).show();
+                        if (c.moveToFirst()) {
+                            int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+                            if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                                String apkLocation = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                                apkLocation = apkLocation.replace("file://", "");
+                                install(apkLocation);
+                            } else {
+                                Toast.makeText(ctx, ctx.getString(R.string.update_error), Toast.LENGTH_LONG).show();
+                            }
+
+                            Log.i("handleData()", "Reason: " + c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON)));
                         }
-
-                        Log.i("handleData()", "Reason: " + c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON)));
                     }
+                }catch (Exception e){
+                    Toast.makeText(ctx, ctx.getString(R.string.update_error), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
             }
         };
